@@ -4,5 +4,60 @@
 
 <div class="container">
   <h2>Please choose from the following cars:</h2>
-  <p>-- here will be the html for each car by loop --</p>
+</div>
+
+<div class="container w-50 my-5 bg-secondary bg-gradient rounded">
+  <table class="table text-light">
+    <thead class="text-uppercase">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Fuel Type</th>
+        <th scope="col">Age (years)</th>
+      </tr>
+    </thead>
+  
+    <tbody *ngFor="let val of newCars; index as i">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{val.brand}}</td>
+        <td>{{val.type}}</td>
+        <td>{{val.age}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+  <button class="btn btn-warning" (click)="authorize()">I am authorized to add new cars &#x21e8;</button>
+</div>
+
+<div id="wrapper" style="display: none;">
+  <div class="container my-5">
+    <h2>Staff Area - add new cars:</h2>
+  </div>
+  
+  <div class="container my-5">
+    <form [formGroup]="carForm" (ngSubmit)="addCars()">
+  
+      <label for="brand">Brand:</label><br>
+      <input type="text" id="brand" formControlName="brand" size="20">
+      <br><br>
+      <label for="types">Types:</label>
+      <select class="ms-2" name="types" id="type" formControlName="type">
+        <option value="petrol">petrol</option>
+        <option value="electric">eletric</option>
+        <option value="hybrid">hybrid</option>
+      </select>
+      <br><br>
+      <label for="age">Age (in years):</label><br>
+      <input type="number" id="age" formControlName="age">
+      <br><br>
+      <input type="submit" class="btn btn-success" value="Submit">
+    </form>
+  </div>
+  
+  <div class="container">
+    <p id="error"></p>
+  </div>
 </div>

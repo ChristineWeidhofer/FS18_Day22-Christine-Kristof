@@ -21,7 +21,8 @@ export class ContactComponent {
 
     let selector = document.getElementById("output")as HTMLElement;
     if (this.contactForm.valid) {
-    selector.innerHTML = (`<b>${valName}</b> with the email address <b>${valEmail}</b> wrote you this message: <b>${valMsg}<b>`);
+    selector.innerHTML = (`Thank you, <b>${valName}</b>, (email: <b>${valEmail}</b>) for your message: <b>"${valMsg}"</b><br>
+    We will get back to you as soon as possible!`);
     } else {
       selector.style.color = "red";
       selector.innerHTML = `Please provide some information in every input field!`;
